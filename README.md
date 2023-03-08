@@ -1,7 +1,7 @@
 # augmented_reality_with_apriltags
 
 </br>
-### Recovered the camera poses with two different approaches: ###
+Recovered the camera poses with two different approaches:</br>
   a) solving the Perspective-N-Point (PnP) problem with coplanar assumption.</br>
   b) solving the Persepective-three-point (P3P) and the Procrustes problem.</br>
 
