@@ -13,7 +13,7 @@ def est_pixel_world(pixels, R_wc, t_wc, K):
         Pw: N x 3 points, the world coordinates of pixels
     """
 
-    ##### STUDENT CODE START #####
+    ##### CODE START #####
     R_wc = np.linalg.inv(R_wc)
     t_wc = -np.matmul(R_wc, t_wc).reshape(3,1)
     Rt = np.concatenate([R_wc[:,0:-1],t_wc],axis=1)
@@ -25,5 +25,5 @@ def est_pixel_world(pixels, R_wc, t_wc, K):
         Pw[i,:] = np.transpose(np.matmul(H_inv,np.transpose(pix_homo[i,:])))
         Pw[i,:] = Pw[i,:]/Pw[i,-1]
         Pw[i,-1] = 0
-    ##### STUDENT CODE END #####
+    ##### CODE END #####
     return Pw
