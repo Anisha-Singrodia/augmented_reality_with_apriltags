@@ -17,22 +17,15 @@ def PnP(Pc, Pw, K=np.eye(3)):
     ##### CODE START #####
 
     # Homography Approach
-    # print(Pc)
-    # print(Pw)
     H = est_homography(Pw[:,0:2], Pc)
-    # print("Homography : ", H)
     z = H[2][2]
     H = H/z
-    # print("Nomralised Homography : ", H)
     K_inv_H = np.matmul(np.linalg.inv(K), H)
-    # print(K_inv_H)
     # Following slides: Pose from Projective Transformation
     H_dash = np.zeros((3,3))
     H_dash[:, 0] = K_inv_H[:, 0]
     H_dash[:, 1] = K_inv_H[:, 1]
-    # print(K_inv_H[:, 0].shape)
     H_dash[:, 2] = np.cross(np.transpose(K_inv_H[:, 0]), np.transpose(K_inv_H[:,1]))
-    # print(H_dash)
     [U, S , Vt ] = np.linalg.svd(H_dash)
     mat = np.eye(3)
     mat[2][2] = np.linalg.det(np.matmul(U, Vt))
