@@ -11,7 +11,7 @@ def Procrustes(X, Y):
         R: 3x3 numpy array describing camera orientation in the world (R_wc)
         t: (3,) numpy array describing camera translation in the world (t_wc)
     """
-    ##### STUDENT CODE START #####
+    ##### CODE START #####
     A_bar = np.transpose(np.mean(Y, axis=0)) #3*1
     B_bar = np.transpose(np.mean(X, axis=0)) #3*1
     A_ = np.transpose(Y-A_bar) #3*n
@@ -23,7 +23,7 @@ def Procrustes(X, Y):
     R = np.matmul(np.matmul(U, mat), Vt)
     t = np.transpose(A_bar) - np.matmul(R, np.transpose(B_bar))
 
-    ##### STUDENT CODE END #####
+    ##### CODE END #####
     return R, t
 
 def P3P(Pc, Pw, K=np.eye(3)):
@@ -39,7 +39,7 @@ def P3P(Pc, Pw, K=np.eye(3)):
 
     """
 
-    ##### STUDENT CODE START #####
+    ##### CODE START #####
 
     # Invoke Procrustes function to find R, t
     # You may need to select the R and t that could transoform all 4 points correctly. 
@@ -93,9 +93,7 @@ def P3P(Pc, Pw, K=np.eye(3)):
         p_cam[0,:] = p1[0,:]*s1
         p_cam[1,:] = p1[1,:]*s2
         p_cam[2,:] = p1[2,:]*s3
-        print(Pw[1:,:])
         r1,t1 = Procrustes(Pw[1:,:], p_cam)
-        print(r1)
         y = np.matmul(K, np.matmul(r1, np.transpose(Pw[0,:])) + t1)
         y = (y[:]/y[-1])[:-1]
         l2_norm_curr = np.linalg.norm(y - Pc[0,:])
@@ -107,7 +105,7 @@ def P3P(Pc, Pw, K=np.eye(3)):
     R = np.linalg.inv(R)
     t = -np.matmul(R,t)
 
-    ##### STUDENT CODE END #####
+    ##### CODE END #####
 
     return R, t
 
