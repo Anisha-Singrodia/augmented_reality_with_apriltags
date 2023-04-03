@@ -14,7 +14,7 @@ def PnP(Pc, Pw, K=np.eye(3)):
 
     """
 
-    ##### STUDENT CODE START #####
+    ##### CODE START #####
 
     # Homography Approach
     # print(Pc)
@@ -39,26 +39,5 @@ def PnP(Pc, Pw, K=np.eye(3)):
     R = np.transpose(np.matmul(np.matmul(U, mat), Vt))
     t = -np.matmul(R, (K_inv_H[:,2]/(np.linalg.norm(K_inv_H[:,0]))))
 
-    ##### STUDENT CODE END #####
-    return R, t
-
-# R_wc =  np.array([[ 0.876204,   -0.15612653,  0.45595071],
-#  [-0.47769752, -0.40661165,  0.77876315],
-#  [ 0.06380928, -0.90016191, -0.43085602]])
-# t_wc =  [-0.02822914, -0.04410593, -0.71409775]
-# rt = np.zeros((3,3))
-# rt[:,0] = R_wc[:,0]
-# rt[:,1] = R_wc[:,1]
-# # rt[:,2] = R_wc[:,2]
-# rt[:,2] = t_wc
-# print(rt)
-# K = np.array([[823.8, 0.0, 304.8],
-#                   [0.0, 822.8, 236.3],
-#                     [0.0, 0.0, 1.0]])
-# H = np.matmul(K,rt)
-# print(H)
-# pw = np.array([-0.07, -0.07, 0])
-# pc = np.matmul(H,pw)
-# print(pc)
-# print(pc[0]/pc[2])
-# print(pc[1]/pc[2])                
+    ##### CODE END #####
+    return R, t               
